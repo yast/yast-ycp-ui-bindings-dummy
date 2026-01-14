@@ -7,9 +7,6 @@ on: [push, pull_request]
 
 jobs:
   Package:
-    # skip in master, but run in forks
-    if:  github.ref_name != 'master' || github.repository_owner != 'yast'
-
     runs-on: ubuntu-latest
     container:
       image: registry.opensuse.org/yast/head/containers/yast-cpp:latest
@@ -17,7 +14,7 @@ jobs:
     steps:
 
     - name: Git Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Package Build
       run:  yast-ci-cpp

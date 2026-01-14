@@ -1,4 +1,4 @@
-## yast2-libyui configure.in.in
+## ycp-ui-bindings-dummy configure.in.in
 
 ## initialize
 @YAST2-INIT-COMMON@
@@ -14,11 +14,7 @@ CREATE_PKGCONFIG=true
 @YAST2-CHECKS-COMMON@
 @YAST2-CHECKS-PROGRAM@
 
-## check for libyui includes
 AC_LANG_PUSH([C++])
-AC_CHECK_HEADERS([yui/YWidgetFactory.h],
-                 [],
-                 [AC_MSG_ERROR([libyui headers not found - install package libyui-devel!])])
 AC_LANG_POP
 
 @YAST2-OUTPUT@

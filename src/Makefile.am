@@ -1,5 +1,5 @@
 
-# Makefile.am for ycp-ui-bindings/src
+# Makefile.am for ycp-ui-bindings-dummy/src
 #
 
 AM_CXXFLAGS = -DY2LOG=\"libycp\"		\
@@ -13,29 +13,7 @@ plugin_LTLIBRARIES = libpy2UI.la
 libpy2UI_la_SOURCES =				\
 	YUIComponentCreator.cc			\
 	YUIComponent.cc				\
-	YUINamespace.cc				\
-	YCP_UI.cc				\
-	YCP_util.cc				\
-	YCPBuiltinCaller.cc			\
-						\
-	YCPEvent.cc				\
-	YCPValueWidgetID.cc			\
-						\
-	YCPDialogParser.cc			\
-	YCPItemParser.cc			\
-	YCPItemWriter.cc			\
-	YCPMenuItemParser.cc			\
-	YCPMenuItemWriter.cc			\
-	YCPTableItemParser.cc			\
-	YCPTableItemWriter.cc			\
-	YCPTreeItemParser.cc			\
-	YCPTreeItemWriter.cc			\
-	YCPWizardCommandParser.cc		\
-	YCPPropertyHandler.cc			\
-						\
-	YCPErrorDialog.cc			\
-	YCPMacroPlayer.cc			\
-	YCPMacroRecorder.cc
+	YUINamespace.cc
 
 
 
@@ -43,51 +21,19 @@ pkgincludedir = $(includedir)/ycp-ui
 
 pkginclude_HEADERS =				\
 	YUIComponentCreator.h			\
-	YUIComponent.h				\
-						\
-	YCP_UI.h				\
-	YCPDialogParser.h			\
-	YCPMenuItem.h				\
-	YCPValueWidgetID.h
-
+	YUIComponent.h
 
 noinst_HEADERS =				\
-	YUINamespace.h				\
-	YCP_util.h				\
-	YCPBuiltinCaller.h			\
-						\
-	YCPEvent.h				\
-	YCPItem.h				\
-	YCPTableItem.h				\
-	YCPTreeItem.h				\
-						\
-	YCPItemParser.h				\
-	YCPItemWriter.h				\
-	YCPMenuItemParser.h			\
-	YCPMenuItemWriter.h			\
-	YCPTableItemParser.h			\
-	YCPTableItemWriter.h			\
-	YCPTreeItemParser.h			\
-	YCPTreeItemWriter.h			\
-	YCPWizardCommandParser.h		\
-	YCPPropertyHandler.h			\
-						\
-	YCPErrorDialog.h			\
-	YCPMacroPlayer.h			\
-	YCPMacroRecorder.h			\
-	YCP_UI_Exception.h			\
-	YWidgetOpt.h
-
+	YUINamespace.h
 
 
 INCLUDES =					\
-	-I$(includedir)				\
-	-I$(includedir)/yui
+	-I$(includedir)
 
 libpy2UI_la_LDFLAGS = -L$(libdir) -version-info 2:0 -Wl,--no-undefined
 
 libpy2UI_la_LIBADD =				\
-	-lpthread -lyui -ly2 -lycp -lycpvalues -ly2util
+	-lpthread -ly2 -lycp -lycpvalues -ly2util
 
 # "foo bar: baz" is wrong
 # see "info '(automake)Multiple Outputs'"

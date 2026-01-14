@@ -35,6 +35,6 @@ OUTPUT2
 pluglib-bindings.ami
 README
 compile
-yast2-ycp-ui-bindings.pc
+yast2-ycp-ui-bindings*.pc
 src/UIBuiltinCalls.h
 src/UIBuiltinTable.h
