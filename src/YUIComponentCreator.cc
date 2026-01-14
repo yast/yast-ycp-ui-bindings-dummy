@@ -41,9 +41,6 @@ you may find current contact information at www.novell.com
 using std::string;
 
 
-#define SUPPORT_GTK_UI	1
-
-
 // Global instances of this class for the Y2ComponentBroker to find.
 //
 // The Y2Componentbroker will search for global symbols "g_y2cc" + component_name.
@@ -106,17 +103,9 @@ YUIComponentCreator::createInternal( const string & componentName, bool isNamesp
     if ( name == "UI" ||
 	 name == "qt" ||
 	 name == "ncurses"  ||
-#if SUPPORT_GTK_UI
-	 name == "gtk" ||
-#endif
 	 name == "ui" )
     {
-	if ( name == "UI" && ! isNamespace )
-	    YUIComponent::setUseDummyUI( true );
 	
-	if ( name == "UI" || name == "ui" )
-	    name = "";		// Automatically choose the appropriate UI
-
 	YUIComponent * uiComponent = YUIComponent::uiComponent();
 
 	if ( ! uiComponent )

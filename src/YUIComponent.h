@@ -35,7 +35,6 @@ you may find current contact information at www.novell.com
 #include <ycp/YCPValue.h>
 
 
-class YUI;
 class Y2Namespace;
 
 /**
@@ -81,14 +80,6 @@ public:
     static YUIComponent * uiComponent();
 
     /**
-     * Returns the instance of the UI or 0 if none has been created yet.
-     * Note: This does _not_ create a UI on the first call; this happens in the
-     * first call of a UI builtin via the YUIComponent's call handler which
-     * creates a UI upon its first call and then calls the UI's call handler.
-     **/
-    static YUI * ui() { return _ui; }
-
-    /**
      * Create a UI instance. The UI component normally handles that all by
      * itself when the first UI builtin is called.
      **/
@@ -123,46 +114,40 @@ public:
      * The name of a macro file that might have been passed as a -macro
      * command line argument or 0 if none
      **/
-    const char * macroFile() const { return _macroFile; }
+    const char * macroFile() const { return NULL; }
 
     /**
      * Return 'true' if a dummy UI is used, i.e. a real UI will never be
      * instantiated. This is used in YCP testsuites to prevent UI calls
      * blocking the testsuite workflow.
      **/
-    static bool useDummyUI() { return _useDummyUI; }
+    static bool useDummyUI() { return true; }
     
     /**
      * Set the useDummyUI flag to prevent a real UI from ever being
      * instantiated. This is used in YCP testsuites to prevent UI calls
      * blocking the testsuite workflow.
      **/
-    static void setUseDummyUI( bool useDummyUI ) { _useDummyUI = useDummyUI; }
+    static void setUseDummyUI( bool useDummyUI ) {  }
     
     /**
      * Set a callback component.
      **/
     void setCallback( Y2Component * callbackComponent )
-	{ _callbackComponent = callbackComponent; }
+	{  }
     
     /**
      * Return the UI's callback component previously set with setCallback().
      **/
-    Y2Component * getCallback() const { return _callbackComponent; }
+    Y2Component * getCallback() const { return NULL; }
     
     
 private:
 
-    static YUI *		_ui;
     static YUIComponent *	_uiComponent;
-    static bool			_useDummyUI;
 
     string			_requestedUIName;
-    bool			_withThreads;
-    const char *		_macroFile;
-    bool			_haveServerOptions;
     Y2Namespace *		_namespace;
-    Y2Component *		_callbackComponent;
 };
 
 #endif // YUIComponent_h

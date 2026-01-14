@@ -39,7 +39,6 @@ you may find current contact information at www.novell.com
 #include <ycp/YCPCode.h>
 #include <ycp/StaticDeclaration.h>
 
-#include <yui/YUI.h>
 #include "YUIComponent.h"
 
 class YUINamespace;

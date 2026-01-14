@@ -1,7 +1,7 @@
 #
-# spec file for package yast2-ycp-ui-bindings
+# spec file for package yast2-ycp-ui-bindings-dummy
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# YApplication::askForWidgetStyle()
-%define min_yui_version	4.3.0
-%define yui_so		16
-
-Name:           yast2-ycp-ui-bindings
-Version:        5.0.1
+Name:           yast2-ycp-ui-bindings-dummy
+Version:        5.0.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -41,36 +37,29 @@ BuildRequires:	sgml-skel
 Requires:	yast2-core
 BuildRequires:	yast2-core-devel
 
-BuildRequires:	libyui-devel >= %min_yui_version
-Requires:	libyui%yui_so >= %min_yui_version
+Conflicts:	    yast2-ycp-ui-bindings
 
-# libyui ImplPtr
-BuildRequires:	boost-devel
-
-Summary:	YaST2 - YCP Bindings for the YaST2 User Interface Engine
+Summary:	YaST2 - YCP Bindings for the YaST2 User Interface Engine (dummy implementation)
 
 %description
-This package makes the generic YaST2 user interface engine available
-for YCP applications (YCP is the scripting language in which most YaST2
-modules are written).
+This package provides dummy implementation for the generic YaST2 user
+interface engine.
 
 %package devel
-Requires:	yast2-ycp-ui-bindings = %version
+Requires:	yast2-ycp-ui-bindings-dummy = %version
 Group:		Development/Libraries
 
-Summary:	YaST2 - YCP Bindings for the YaST2 User Interface Engine
+Summary:	YaST2 - YCP Bindings for the YaST2 User Interface Engine (dummy implementation)
 
 Requires:	glibc-devel
 Requires:	libstdc++-devel
-Requires:	boost-devel
-Requires:	libyui-devel >= %min_yui_version
 Requires:	yast2-core-devel
 Requires:	yast2-devtools
 
+Conflicts:	    yast2-ycp-ui-bindings-devel
+
 %description devel
-This is the development package that makes the generic YaST2 user
-interface engine available for YCP applications (YCP is the scripting
-language in which most YaST2 modules are written).
+Development package for the dummy YCP UI bindings.
 
 %prep
 %setup -n %{name}-%{version}
@@ -98,7 +87,7 @@ mkdir -p "$RPM_BUILD_ROOT"%{yast_logdir}
 %{yast_plugindir}/lib*.so
 %{yast_plugindir}/lib*.la
 %{yast_includedir}
-%{_libdir}/pkgconfig/yast2-ycp-ui-bindings.pc
+%{_libdir}/pkgconfig/yast2-ycp-ui-bindings-dummy.pc
 %doc %{yast_docdir}
 %license COPYING
 
